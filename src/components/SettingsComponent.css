@@ -1,0 +1,403 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #2563eb, #3b82f6);
+  --secondary-gradient: linear-gradient(135deg, #14b8a6, #06b6d4);
+  --surface-gradient: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  --glass-background: rgba(14, 13, 13, 0.6);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --neon-blue: rgba(59, 130, 246, 0.8);
+  --neon-green: rgba(34, 197, 94, 0.8);
+  --glow-color: rgba(59, 130, 246, 0.3);
+}
+
+/* General Text Styling */
+.settings-container,
+.settings-container h3,
+.settings-container label,
+.settings-container input,
+.settings-container select,
+.settings-container .placeholder {
+  color: rgba(255, 255, 255, 0.596) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-gradient: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(31, 41, 55, 0.8));
+    --glass-background: rgba(17, 24, 39, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --glow-color: rgba(34, 197, 94, 0.3);
+  }
+}
+
+/* Light Mode */
+.settings-container.light-mode {
+  background: rgba(255, 255, 255, 0.284);
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  color: #000 !important;
+  transition: all 0.4s ease; /* Smooth transition */
+}
+
+.settings-container.light-mode h3,
+.settings-container.light-mode label,
+.settings-container.light-mode input,
+.settings-container.light-mode select,
+.settings-container.light-mode .placeholder {
+  color: #000 !important;
+}
+
+/* Light Mode for Settings Items */
+.setting-item.light-mode {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease; 
+}
+
+.setting-item input.light-mode,
+.setting-item select.light-mode {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+/* Cancel Icon for Light Mode */
+.cancel-icon.light-mode {
+  background: rgba(255, 255, 255, 0.6);
+  color: #000;
+  transition: all 0.4s ease; 
+}
+
+/* Overlay */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;  
+  backdrop-filter: blur(10px);  
+}
+
+
+
+/* Default Container */
+.settings-container {
+  background: var(--surface-gradient);
+  backdrop-filter: blur(5px); 
+  border: 3px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 400px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px var(--shadow-color), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideIn 0.4s ease-out;
+  transition: all 0.4s ease; 
+  z-index: 10000; 
+}
+
+/* Larger Modal for Laptops and Tablets */
+@media (min-width: 768px) {
+  .settings-container {
+    max-width: 600px;
+    padding: 2rem;
+    width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .settings-container {
+    max-width: 700px;
+  }
+}
+
+.settings-container h3 {
+  color: var(--text-primary);
+  font-size: 1.20rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.settings-container h3::after {
+  content: '';
+  display: block;
+  margin: 0.5rem auto;
+  width: 160px;
+  height: 2px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+.cancel-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--glass-background);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-icon:hover {
+  background: var(--neon-blue);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--neon-blue);
+}
+
+/* Settings Items */
+/* General setting item styling */
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--glass-background);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.setting-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.setting-item input,
+.setting-item select {
+  padding: 0.70rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--glass-background);
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.setting-item input:focus,
+.setting-item select:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+}
+
+.setting-item input[type="checkbox"] {
+  appearance: none;
+  width: 48px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--glass-background);
+  border: 1px solid var(--border-color);
+  position: relative;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.setting-item input[type="checkbox"]:checked {
+  background: var(--primary-gradient);
+}
+
+/* Profile Picture Preview */
+.profile-picture-preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+  border: 3px solid var(--border-color);
+}
+
+/* Placeholder text when no profile picture is selected */
+.placeholder {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px;
+  background: #ddd;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer Buttons */
+.settings-modal-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.settings-modal-footer button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(--glass-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-modal-footer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--neon-blue);
+}
+
+.settings-modal-footer button.cancel-btn {
+  background: rgba(255, 0, 0, 0.1);
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.settings-modal-footer button.cancel-btn:hover {
+  background: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* Scrollbar Styling */
+.settings-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.settings-container::-webkit-scrollbar-thumb {
+  background-color: var(--neon-blue);
+  border-radius: 4px;
+}
+
+.settings-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* for controlling the sidebar container */
+/* Sidebar Specific Styles */
+.sidebar-container {
+  background: var(--glass-background);
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+  transition: all 0.4s ease; 
+}
+
+.sidebar-container a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-container a:hover {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.sidebar-container .sidebar-header {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-container .sidebar-footer {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Light Mode Overrides for Sidebar */
+.sidebar-container.light-mode {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.sidebar-container.light-mode a {
+  color: #333;
+}
+
+.sidebar-container.light-mode a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.sidebar-container.light-mode .sidebar-header {
+  color: #000;
+}
+
+.sidebar-container.light-mode .sidebar-footer {
+  color: #555;
+}
+
+
+
+/* loading spinner for my settings  */
+.loading-spinner {
+  width: 24px; 
+  height: 24px; 
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
+  margin-top: 10px; 
+  margin-left: 10px;
+}
+
+/* Animation for spinning effect */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

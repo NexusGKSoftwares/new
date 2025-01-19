@@ -1,0 +1,165 @@
+/* Divine Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Enlightened Container */
+.container {
+    position: relative; 
+    width: 100px; 
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Remove any border or background here */
+}
+/* Ring Transcendence */
+.ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 60%;
+    border: 3px solid transparent; 
+    contain: paint;
+    content-visibility: auto;
+    contain-intrinsic-size: 100px; 
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+/* Ring Variations */
+:root {
+    --ring-color-primary: #24ecff;
+    --ring-color-secondary: #93ff2d;
+    --ring-color-tertiary: #e41cf8;
+    --box-shadow-color: rgba(36, 236, 255, 0.3);
+}
+
+.ring-primary {
+    border-top: 3px solid var(--ring-color-primary); 
+    box-shadow: 0 0 15px var(--box-shadow-color); 
+    animation: animate-primary 4s linear infinite;
+}
+
+.ring-primary::before {
+    content: '';
+    position: absolute;
+    top: 8px;  
+    right: 8px; 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%;
+    background: var(--ring-color-primary);
+    box-shadow: 0 0 15px var(--ring-color-primary); 
+}
+
+.ring-secondary {
+    border-left: 3px solid var(--ring-color-secondary); 
+    box-shadow: 0 0 15px rgba(147, 255, 45, 0.3); 
+    animation: animate-secondary 4s linear infinite;
+    animation-delay: -1s;
+}
+
+.ring-secondary::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 8px;  
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%;
+    background: var(--ring-color-secondary);
+    box-shadow: 0 0 15px var(--ring-color-secondary); 
+}
+
+.ring-tertiary {
+    border-left: 3px solid var(--ring-color-tertiary); 
+    box-shadow: 0 0 15px rgba(228, 28, 248, 0.3); 
+    animation: animate-tertiary 4s linear infinite;
+    animation-delay: -3s;
+    top: -50px;  
+}
+
+.ring-tertiary::before {
+    content: '';
+    position: absolute;
+    bottom: 8px; 
+    left: 8px;  
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%;
+    background: var(--ring-color-tertiary);
+    box-shadow: 0 0 15px var(--ring-color-tertiary); 
+}
+
+/* Enlightened Text */
+.loading-text {
+    position: absolute;
+    bottom: -40px; 
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1em; 
+    letter-spacing: 0.1em; 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+    z-index: 10; 
+}
+
+/* CPU-Optimized Animations */
+@keyframes animate-primary {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes animate-secondary {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes animate-tertiary {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* Adaptive Design */
+@media (prefers-reduced-motion) {
+    .ring {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-data) {
+    .ring {
+        transform: scale(0.8);
+    }
+}
+
+/* Loading icon */
+.loading-icon {
+    width: 30px; 
+    height: 30px; 
+    animation: spin 1.5s linear infinite;
+    fill: #4a90e2; 
+    background: none; /* Remove background */
+    border: none; /* Remove any border */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

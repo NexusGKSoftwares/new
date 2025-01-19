@@ -1,0 +1,162 @@
+/* Wrapper for vertical and horizontal centering */
+.error-message-container {
+    position: fixed;
+    top: 0;/* Centers vertically */
+    left: 50%; /* Centers horizontally */
+    transform: translate(-50%, -110%); /* Offsets by 50% of the element's size */
+    z-index: 1000;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 20px;
+    pointer-events: none; /* Allows clicking through the container */
+}
+
+/* Main error message box */
+.error-message-content {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 245, 245, 0.9)
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(244, 67, 54, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto; /* Re-enable pointer events */
+    animation: slideIn 0.4s ease-out, floatAnimation 3s ease-in-out infinite;
+}
+
+/* Retry button styling */
+.reload-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.reload-button:hover {
+    background-color: #218838;
+}
+
+.reload-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.6);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .error-message-content {
+        background: linear-gradient(
+            135deg,
+            rgba(30, 30, 30, 0.95),
+            rgba(40, 40, 40, 0.9)
+        );
+        border-color: rgba(244, 67, 54, 0.3);
+    }
+
+    .error-message-content p {
+        color: #e0e0e0;
+    }
+
+    .reload-button {
+        background-color: #f44336;
+        color: white;
+    }
+
+    .reload-button:hover {
+        background-color: #d32f2f;
+    }
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes borderPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+    .error-message-container {
+        max-width: 90%;
+        padding: 0 10px;
+    }
+
+    .error-message-content {
+        padding: 16px 20px;
+        border-radius: 12px;
+    }
+
+    .error-message-content p {
+        font-size: 0.875rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .error-message-content {
+        animation: none;
+    }
+
+    .error-message-content::before,
+    .error-message-content::after {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .error-message-container {
+        position: static;
+        transform: none;
+        margin: 20px 0;
+    }
+
+    .error-message-content {
+        box-shadow: none;
+        border: 1px solid #000;
+        background: none;
+    }
+
+    .error-message-content::before,
+    .error-message-content::after {
+        display: none;
+    }
+}

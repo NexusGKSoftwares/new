@@ -1,0 +1,235 @@
+/* Sidebar container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateX(0);
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  z-index: 500; /* Above the main content */
+}
+
+/* Dark mode sidebar */
+.sidebar.dark {
+  background: rgba(0, 0, 0, 0.85); /* Darker background for dark mode */
+  color: white; /* Ensure text is white in dark mode */
+}
+
+/* Light mode sidebar */
+.sidebar.light {
+  background: rgba(255, 255, 255, 0.505); /* Lighter background for light mode */
+  color: black; /* Ensure text is black in light mode */
+}
+
+/* Sidebar hidden */
+.sidebar.hidden {
+  transform: translateX(-100%); /* Slide out of view */
+}
+
+/* Sidebar header */
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #84fab0; /* Accent color matching the background */
+}
+
+/* Dark mode sidebar header */
+.sidebar.dark .sidebar-header h2 {
+  color: #84fab0; /* Light color for header in dark mode */
+}
+
+/* Light mode sidebar header */
+.sidebar.light .sidebar-header h2 {
+  color: #060606; /* Darker accent color for light mode */
+}
+
+/* Sidebar menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-menu li {
+  padding: 10px 15px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar-menu li:hover {
+  background: #84fab0; /* Highlight color */
+  color: black;
+  border-radius: 5px;
+}
+
+/* Active Menu Item */
+.sidebar-menu .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Dark mode sidebar menu item */
+.sidebar.dark .sidebar-menu li:hover {
+  background: #84fab0; /* Light color for hover effect */
+  color: black;
+}
+
+/* Light mode sidebar menu item */
+.sidebar.light .sidebar-menu li:hover {
+  background: #84fab0; /* Highlight color */
+  color: black;
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Ensures the button is aligned properly */
+  align-items: center;
+}
+
+/* Adjusting the logout button position */
+.logout-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  color: white;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px; /* Move the button up */
+  
+}
+
+.logout-button:hover {
+  background: darkred;
+}
+
+/* Dark mode logout button */
+.sidebar.dark .logout-button {
+  background: #dc3545; /* Adjusted red for dark mode */
+}
+
+.sidebar.dark .logout-button:hover {
+  background: darkred;
+}
+
+/* Light mode logout button */
+.sidebar.light .logout-button {
+  background: #eb3838; /* Lighter red for light mode */
+}
+
+.sidebar.light .logout-button:hover {
+  background: #ff4c4c;
+}
+
+
+/* Toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 1001; /* Above sidebar */
+  transition: background-color 0.3s ease, left 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.sidebar-toggle.open {
+  left: 270px; /* Adjust based on sidebar width */
+}
+
+.sidebar-toggle.closed {
+  left: 20px;
+}
+
+/* Dark mode sidebar toggle */
+.sidebar-toggle.dark {
+  background: rgba(255, 255, 255, 0.8); /* Lighter background for toggle button */
+  color: black;
+}
+
+/* Light mode sidebar toggle */
+.sidebar-toggle.light {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+/* Settings Modal */
+.settings-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 2000; /* Above sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings-modal h2 {
+  margin-bottom: 20px;
+}
+
+.settings-modal button {
+  padding: 10px 15px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.settings-modal button:hover {
+  background-color: #45a049;
+}
+
+/* Dark mode for settings modal */
+.settings-modal.dark {
+  background-color: #333;
+  color: white;
+}
+
+.settings-modal.dark button {
+  background-color: #6C757D;
+}
+
+.settings-modal.dark button:hover {
+  background-color: #5A6268;
+}

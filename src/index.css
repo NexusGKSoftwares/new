@@ -1,0 +1,11 @@
+/* Example of manually adding vendor prefixes */
+.some-class {
+    display: -webkit-box;  /* Safari 3.0-6.0 */
+    display: -ms-flexbox;  /* IE 10 */
+    display: flex;         /* Modern browsers */
+  }
+  
+  @tailwind base;
+@tailwind components;
+@tailwind utilities;
+

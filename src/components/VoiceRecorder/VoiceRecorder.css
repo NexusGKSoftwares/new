@@ -1,0 +1,153 @@
+.audio-player {
+    display: block; /* Ensure it's treated as a block-level element */
+    width: 100%;    /* Allow it to expand across the container */
+    height: auto;   /* Maintain aspect ratio */
+    background-color: transparent; /* Remove default background */
+    border: none;   /* Remove default borders */
+  }
+  
+
+
+.voice-recorder-container {
+    --recorder-primary: rgb(59, 130, 246);
+    --recorder-secondary: rgb(239, 68, 68);
+    --recorder-background: rgb(243, 244, 246);
+    --recorder-text: rgb(75, 85, 99);
+  
+    position: relative;
+    width: 100%;
+    isolation: isolate;
+  }
+  
+  .voice-recorder-button {
+    position: relative;
+    border-radius: 50%; /* Keeps it circular */
+    padding: 0.5rem; /* Space for the icon, can be adjusted if necessary */
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    touch-action: none;
+    cursor: pointer;
+    background-color: transparent; /* Removed white background */
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3); /* Light shadow around the button */
+    border: none; /* Removed border to avoid any default border styling */
+  }
+  
+  .voice-recorder-button:active {
+    transform: scale(0.95);
+  }
+  
+  .voice-recorder-button.recording {
+    background-color: transparent; /* Keep transparent during recording */
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .voice-recorder-button:hover {
+    /* Glow Effect */
+    animation: glow 1.5s ease-in-out infinite, scale-up 0.5s ease;
+    box-shadow: 0 0 15px 4px rgba(59, 130, 246, 0.8), 0 0 25px 6px rgba(59, 130, 246, 0.6);
+  }
+  
+  .voice-recorder-button:hover svg {
+    fill: rgba(59, 130, 246, 1); /* Glowing effect on icon */
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2);
+    }
+  }
+  
+  @keyframes scale-up {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .voice-recorder-progress {
+    position: relative;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--recorder-background);
+    overflow: hidden;
+  }
+  
+  .voice-recorder-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--recorder-primary);
+    transition: width 100ms linear;
+  }
+  
+  .voice-recorder-waveform {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 32px;
+  }
+  
+  .waveform-bar {
+    width: 2px;
+    height: 100%;
+    background-color: var(--recorder-primary);
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+  
+  .recording .waveform-bar {
+    animation: waveform 1s ease-in-out infinite;
+    animation-delay: calc(var(--bar-index) * 100ms);
+  }
+  
+  .voice-recorder-controls {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--recorder-background);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  .voice-recorder-timestamp {
+    font-variant-numeric: tabular-nums;
+    color: var(--recorder-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  @keyframes waveform {
+    0%, 100% {
+      transform: scaleY(0.2);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .voice-recorder-container * {
+      transition-duration: 150ms;
+    }
+  }
+  

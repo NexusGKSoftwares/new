@@ -1,0 +1,23 @@
+
+  
+  /* Chrome-specific styles */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .some-class {
+      /* Chrome-specific styles */
+      background-color: #ff8c00; /* Example style change */
+    }
+  }
+
+
+  /* Chrome-specific styles */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .sidebar {
+      background: rgba(0, 0, 0, 0.75); /* Slightly adjusted for Chrome */
+      box-shadow: 3px 0 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow effect */
+    }
+  
+    .sidebar-toggle {
+      background: rgba(0, 0, 0, 0.9); /* Darker toggle for Chrome */
+    }
+  }
+  

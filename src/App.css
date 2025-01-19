@@ -1,0 +1,93 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:  #f4f4f9;
+    overflow: hidden;
+}
+
+.loading {
+  position: fixed; /* Changed from absolute to fixed to center it */
+  top: 0;          /* Adjusted to start from top */
+  left: 0;         /* Adjusted to start from left */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.74);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+  color: #f4f4f9;
+  z-index: 1000;
+}
+
+.app-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.main-content{
+    z-index: 1;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 95%;
+    padding: 15px;    
+}
+
+
+/* Loading icon container */
+.loading-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full screen center */
+  flex-direction: column;
+}
+
+.loading-icon {
+  animation: spin 1.5s linear infinite;
+  fill: #4a90e2; /* Adjust color */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading text styles */
+.loading-text {
+  font-size: 1.2em; /* Adjust the size */
+  color: white; /* Ensure text is visible */
+  z-index: 2; /* Ensure text is on top of the rings */
+  position: absolute;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* Optional: Fade-in animation for loading text */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Optional: Reduce motion if user prefers it */
+@media (prefers-reduced-motion) {
+  .loading-icon {
+    animation: none; /* Disable spin animation */
+  }
+}

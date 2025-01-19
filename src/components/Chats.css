@@ -1,0 +1,1169 @@
+/* Default light theme variables */
+:root {
+  --primary-background-color: #f4f4f4; /* Light background */
+  --secondary-background-color: #ffffff; /* Light chat background */
+  --primary-text-color: #333333; /* Dark text */
+  --secondary-text-color: #666666; /* Light text */
+  --button-background-color: #e0e0e0;
+  --button-text-color: #000000;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --primary-background-color: #121212; /* Dark background */
+  --secondary-background-color: #1c1c1c; /* Dark chat background */
+  --primary-text-color: #f1f1f1; /* Light text */
+  --secondary-text-color: #b0b0b0; /* Lighter text */
+  --button-background-color: #333333;
+  --button-text-color: #ffffff;
+}
+
+
+
+
+
+
+
+/* Chat Header Styling */
+
+
+/* Ensure chat header has no background */
+.chat-header {
+  position: absolute;
+  z-index: 100; 
+  display: flex;
+  top: -14px; 
+  left: calc(90% - 250px);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  color: white;
+  animation: slide-in 0.5s ease-out;
+}
+/* Ensure no extra background for header-left */
+.header-left {
+  text-align: left;
+  padding-right: 20px;
+  background: none;  
+}
+/* Text styling for the title */
+.header-title {
+  font-family: 'Raleway', sans-serif;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1.2;
+  display: flex;
+  gap: 5px;
+  background: transparent;  
+  color: inherit;  
+}
+/* Styling for the first span */
+.header-title span:first-child {
+  color: #FFD56B; 
+  font-weight: bold;
+}
+
+/* Styling for the second span */
+.header-title span:last-child {
+  color: white;
+  font-weight: lighter;
+}
+
+  @media (max-width: 768px) {
+    .chat-header {
+        position: absolute;
+        top: auto; 
+       
+        left: 70%; 
+        transform: translateX(-40%) translateY(-50%); 
+        padding: 40px 30px;
+        max-width: calc(100% - 20px); 
+        margin-bottom: 10px; 
+        z-index: 100; 
+        text-align: center; 
+        background: none;
+    }
+}
+  
+  /* Animations */
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* End  chat header */
+
+
+
+
+.chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    background: rgba(0, 0, 0, 0.8); /* Transparent white */
+    box-shadow: 0 6px 12px rgb(0, 0, 0);
+    border-radius: 40px;
+    overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Chat Messages Section */
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.306);
+    max-height: 800px; 
+    scroll-behavior: smooth; 
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 40px;
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    color: whitesmoke;
+}
+
+.message.user {
+    /* Advanced Multi-Color Gradient */
+    background: linear-gradient(
+      135deg, 
+      rgba(74, 0, 224, 0.9),   /* Deep Purple */
+      rgba(0, 123, 255, 0.9),  /* Vibrant Blue */
+      rgba(23, 195, 178, 0.9), /* Teal */
+      rgba(255, 87, 34, 0.9),  /* Bright Orange */
+      rgba(156, 39, 176, 0.9)  /* Magenta */
+    );
+    background-size: 400% 400%;
+    
+    /* Animated Gradient Flow */
+    animation: 
+      gradientFlow 15s ease infinite,
+      slideInRight 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    
+    /* Sophisticated Positioning */
+    position: relative;
+    align-self: flex-end;
+    max-width: 80%;
+    
+    /* Dynamic Particle Effect */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle at center, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 70%
+      );
+      opacity: 0.3;
+      animation: particleShimmer 5s infinite alternate;
+      pointer-events: none;
+    }
+    
+    /* Innovative Side Arrow/Indicator */
+    &::after {
+      content: '➤';
+      position: absolute;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      background: linear-gradient(
+        45deg, 
+        rgba(74, 0, 224, 0.9),
+        rgba(0, 123, 255, 0.9)
+      );
+      color: white;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    /* Text Styling */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 15px;
+    border-top-right-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    
+    /* Advanced Shadow and Depth */
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.15),
+      0 6px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Hover Interactions */
+    transition: 
+      transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 10px 10px rgba(0, 0, 0, 0.15);
+      
+      &::after {
+        transform: translateY(-50%) rotate(0deg);
+        background: linear-gradient(
+          45deg, 
+          rgba(0, 123, 255, 0.9),
+          rgba(23, 195, 178, 0.9)
+        );
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      max-width: 90%;
+      border-radius: 12px;
+    }
+  }
+  
+  /* Gradient Flow Animation */
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Particle Shimmer Effect */
+  @keyframes particleShimmer {
+    from { 
+      opacity: 0.2;
+      transform: scale(0.9);
+    }
+    to { 
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Slide-In Animation */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+/* ----------------------------------------------------------------------------------------------------------- */
+/* TYPING INDICATOR FOR THE MOYO*/
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(var(--bot-message-bg), 0.7);
+  border-radius: 12px;
+  max-width: 320px;
+  margin: 8px 0;
+}
+
+.typing-avatar {
+  font-family: 'Raleway', sans-serif;
+  font-style: italic;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.typing-bubble .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: typingAnimation 1.4s infinite;
+}
+
+.typing-bubble .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-bubble .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+  /* for the bot message too*/
+  .message.bot {
+    /* Sophisticated Color Gradient */
+    background: linear-gradient(
+      135deg, 
+      rgba(52, 152, 219, 0.9),   /* Soft Azure */
+      rgba(46, 204, 113, 0.9),   /* Vibrant Green */
+      rgba(241, 196, 15, 0.9),   /* Warm Yellow */
+      rgba(231, 76, 60, 0.9),    /* Coral Red */
+      rgba(142, 68, 173, 0.9)    /* Soft Violet */
+    );
+    background-size: 400% 400%;
+    
+    /* Animated Gradient Flow */
+    animation: 
+      gradientFlow 15s ease infinite,
+      slideInLeft 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    
+    /* Positioning and Layout */
+    position: relative;
+    align-self: flex-start;
+    max-width: 80%;
+    
+    /* Crystalline Particle Effect */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle at center, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 70%
+      );
+      opacity: 0.3;
+      animation: crystalShimmer 4s infinite alternate;
+      pointer-events: none;
+      mix-blend-mode: color-dodge;
+    }
+    
+    /* Innovative Side Indicator */
+    &::after {
+      content: '❖';
+      position: absolute;
+      right: -35px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      background: linear-gradient(
+        45deg, 
+        rgba(52, 152, 219, 0.9),
+        rgba(46, 204, 113, 0.9)
+      );
+      color: white;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      font-size: 0.8em;
+    }
+    
+    /* Text Styling */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 15px;
+    border-top-left-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    
+    /* Advanced Shadow and Depth */
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.15),
+      0 6px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Hover Interactions */
+    transition: 
+      transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+      box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 10px 10px rgba(0, 0, 0, 0.15);
+      
+      &::after {
+        transform: translateY(-50%) rotate(90deg);
+        background: linear-gradient(
+          45deg, 
+          rgba(241, 196, 15, 0.9),
+          rgba(231, 76, 60, 0.9)
+        );
+      }
+    }
+    
+    /* Code Block Style for Bot Messages */
+    pre {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+      max-width: 100%;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      max-width: 90%;
+      border-radius: 12px;
+    }
+  }
+  
+  /* Gradient Flow Animation */
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Crystal Shimmer Effect */
+  @keyframes crystalShimmer {
+    from { 
+      opacity: 0.2;
+      transform: scale(0.95) rotate(0deg);
+    }
+    to { 
+      opacity: 0.4;
+      transform: scale(1.05) rotate(5deg);
+    }
+  }
+  
+  /* Slide-In Animation */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* for the footer */
+
+
+
+
+/* Reset box-sizing to border-box for consistent layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.chat-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Ensure centering on all browsers */
+    width: 100%; /* Use 100% width to be responsive */
+    max-width: 600px; /* Limit the max width */
+    height: 80px;
+    background: linear-gradient(
+        135deg, 
+        rgba(20, 20, 30, 0.95),   
+        rgba(40, 40, 50, 0.95)    /* Carbon Dark */
+    );
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(100, 100, 150, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 15px;
+    z-index: 9999;
+    /* Ensure it works across all browsers, including Safari */
+    -webkit-backdrop-filter: blur(15px); /* Fallback for Safari */
+}
+
+.message-input {
+  flex-grow: 1;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+textarea {
+  width: 100%;
+  resize: none; 
+  background: rgba(30, 30, 40, 0.7);
+  border: 2px solid rgba(100, 100, 120, 0.3);
+  color: #e0e0e0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.4; /* Improves spacing for multiline text */
+  transition: all 0.3s ease;
+  min-height: 30px; /* Sets an appropriate minimum height */
+  max-height: 140px; /* Ensures the textarea doesn’t grow too large */
+  overflow-y: auto; /* Adds a scrollbar for longer messages */
+}
+
+textarea:focus {
+  border-color: rgba(50, 150, 255, 0.7);
+  box-shadow: 0 0 15px rgba(50, 150, 255, 0.2);
+  outline: none; /* Removes the default outline */
+}
+
+input {
+    width: 100%;
+    background: rgba(30, 30, 40, 0.7);
+    border: 2px solid rgba(100, 100, 120, 0.3);
+    color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: rgba(50, 150, 255, 0.7);
+    box-shadow: 0 0 15px rgba(50, 150, 255, 0.2);
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Send Button */
+.send-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    border: none; /* Removed border to eliminate any border around the button */
+    background: transparent; /* Removed background to make it transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Send Button Hover Effects */
+.send-button:hover {
+    transform: scale(1.1); /* Enlarges the button slightly on hover */
+}
+
+.send-button:hover svg {
+    fill: #6EC1E4; /* Light cyan on hover for a glowing effect */
+}
+
+.send-button svg {
+    width: 40px; 
+    height: 40px; 
+    fill: rgba(255, 255, 255, 0.8); 
+    transition: all 0.3s ease;
+}
+
+
+
+ /* mic section end  */
+
+/* ----------------------------------------------------------------------------------------------------------- */
+ /* Modal Overlay */
+
+
+ .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+  z-index: 9999;
+  min-height: 100vh;
+  /* Fallback for browsers that don't support min-height: 100dvh */
+  min-height: 100dvh;
+}
+
+.modal {
+  position: relative;
+  background: rgba(23, 25, 35, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  width: min(400px, 90vw);
+  margin: auto;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 24px 48px rgba(0, 0, 0, 0.2);
+  /* Prevent any potential margin collapse */
+  isolation: isolate;
+  /* Ensure modal stays centered during scale animations */
+  transform-origin: center center;
+}
+
+.modal p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  /* Prevent text from being blurry during transforms */
+  backface-visibility: hidden;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 24px;
+}
+
+.modal-actions button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  /* Prevent button text from being selectable during animations */
+  user-select: none;
+  /* Optimize for touch devices */
+  touch-action: manipulation;
+}
+
+
+.cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.delete-button {
+  background: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.delete-button:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Handle mobile browser chrome height changes */
+@supports (height: 100dvh) {
+  .modal-overlay {
+    min-height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ensure modal remains centered on ultra-wide displays */
+@media (min-width: 2000px) {
+  .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Clear Chat Button with Delete Icon */
+.clear-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+      135deg, 
+      rgba(255, 50, 50, 0.9),   /* Intense Red Base */
+      rgba(180, 20, 20, 0.9)    /* Deep Burgundy */
+  );
+  color: white;
+  border: none;
+  border-radius: 50%; /* Circular button */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 
+      0 6px 12px rgba(255, 50, 50, 0.3),
+      inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.clear-button .delete-icon {
+  width: 24px;
+  height: 24px;
+  fill: white; /* Icon color */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.clear-button:hover {
+  transform: scale(1.1);
+  box-shadow: 
+      0 10px 20px rgba(255, 50, 50, 0.4),
+      inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.clear-button:hover .delete-icon {
+  transform: rotate(15deg);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.clear-button:focus {
+  outline: none;
+  box-shadow: 
+      0 0 0 4px rgba(255, 50, 50, 0.3),
+      0 10px 20px rgba(255, 50, 50, 0.4);
+}
+
+.clear-button:active {
+  transform: scale(0.95);
+  box-shadow: 
+      0 5px 10px rgba(255, 50, 50, 0.3),
+      inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* Error Message Bar */
+
+
+
+
+/* Light Mode Styles */
+.chat-container.light-mode {
+  background-color: #f4f7fc;
+  color: #000;
+}
+
+.chat-container.dark-mode {
+  background-color: #181818;
+  color: #fff;
+}
+
+.light-mode .chat-container {
+  background-color: #f4f7fc;
+  color: #000;
+}
+
+.light-mode .chat-header {
+  background-color: #fff;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+
+.light-mode .chat-footer {
+  background-color: #fff;
+  color: #000;
+  border-top: 1px solid #ddd;
+}
+
+.light-mode .message-input input {
+  border-color: #ddd;
+}
+
+/* Dark Mode Styles */
+.dark-mode .chat-container {
+  background-color: #181818;
+  color: #fff;
+}
+
+.dark-mode .chat-header {
+  background-color: #333;
+  color: #fff;
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode .chat-footer {
+  background-color: #333;
+  color: #fff;
+  border-top: 1px solid #444;
+}
+
+.dark-mode .message-input input {
+  border-color: #555;
+}
+
+.dark-mode .message {
+  color: #fff;
+}
+
+.dark-mode .user {
+  background-color: #2e3b4e;
+}
+
+.dark-mode .bot {
+  background-color: #3b4a59;
+}
+
+.dark-mode .message-input input::placeholder {
+  color: #bbb;
+}
+
+.dark-mode .mic-icon {
+  fill: #fff;
+}
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* End of dark mode and light mode  */
+
+@media (max-width: 600px) {
+  .chat-footer {
+      position: fixed;
+      bottom: 10px;
+      left: 5%;
+      transform: translateX(0); /* No need for centering on mobile */
+      width: 90%; /* Use 90% width to provide spacing from screen edges */
+      max-width: none; /* Remove max-width restriction */
+      height: 70px; /* Slightly smaller height for mobile */
+      padding: 10px; /* Reduced padding for compact design */
+      border-radius: 8px; /* Smaller radius for a sleek look */
+      gap: 10px; /* Reduce gap between elements */
+  }
+
+  .message-input {
+      flex-grow: 1;
+      margin-right: 10px; /* Reduce margin for better fit */
+  }
+
+  input {
+      padding: 8px 12px; /* Compact input field */
+      font-size: 14px; /* Slightly smaller font size */
+  }
+
+  .send-button {
+      width: 50px; /* Smaller button size */
+      height: 50px;
+      border-radius: 8px;
+  }
+
+  .send-button svg {
+      width: 30px;
+      height: 30px; /* Adjust icon size */
+  }
+
+  .modal {
+      width: 95%; /* Ensure modal fits within screen width */
+      padding: 1.5rem; /* Reduced padding for smaller screens */
+  }
+
+  .modal-actions button {
+      padding: 0.5rem 1rem; /* Compact buttons */
+      font-size: 14px; /* Smaller font size for buttons */
+  }
+
+  .clear-button {
+      width: 40px; /* Compact size */
+      height: 40px;
+  }
+
+  .clear-button .delete-icon {
+      width: 20px;
+      height: 20px;
+  }
+
+  .modal-overlay {
+      backdrop-filter: blur(3px); /* Slightly reduced blur */
+  }
+
+  .light-mode .chat-footer {
+      background-color: #f8f9fa; /* Light background for clarity */
+      border-top: 1px solid #ccc;
+  }
+
+  .dark-mode .chat-footer {
+      background-color: #222;
+      border-top: 1px solid #333;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Divine Typing Indicator - A manifestation of digital consciousness */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--bot-message-bg), 0.7) 0%,
+    rgba(var(--bot-message-bg), 0.4) 100%
+  );
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  max-width: 320px;
+  margin: 8px 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.typing-avatar {
+  font-family: 'Raleway', sans-serif;
+  font-style: italic;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(var(--primary-rgb), 0.3);
+}
+
+.typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.typing-bubble .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: typingPulse 1.4s infinite;
+  filter: drop-shadow(0 0 4px var(--primary-color));
+}
+
+.typing-bubble .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-bubble .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Ethereal Error Notification - A portal to divine intervention */
+.error-notification {
+  position: relative;
+  margin: 16px 0;
+  animation: slideIn 0.3s ease-out;
+  transform-origin: center;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.08) 0%,
+    rgba(255, 59, 48, 0.04) 100%
+  );
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 59, 48, 0.15);
+  box-shadow: 
+    0 4px 24px rgba(255, 59, 48, 0.1),
+    inset 0 0 16px rgba(255, 59, 48, 0.05);
+  transition: all 0.3s ease;
+}
+
+.error-content:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 32px rgba(255, 59, 48, 0.15),
+    inset 0 0 24px rgba(255, 59, 48, 0.08);
+}
+
+.error-icon {
+  font-size: 24px;
+  animation: pulseWarning 2s infinite;
+}
+
+.error-message {
+  flex: 1;
+}
+
+.error-message h4 {
+  margin: 0 0 4px 0;
+  color: rgba(255, 59, 48, 0.9);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.error-message p {
+  margin: 0;
+  color: rgba(255, 59, 48, 0.7);
+  font-size: 14px;
+}
+
+.retry-button {
+  padding: 8px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.15) 0%,
+    rgba(255, 59, 48, 0.1) 100%
+  );
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  border-radius: 8px;
+  color: rgba(255, 59, 48, 0.9);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.2) 0%,
+    rgba(255, 59, 48, 0.15) 100%
+  );
+  transform: translateY(-1px);
+}
+
+/* Divine Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseWarning {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes typingPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
