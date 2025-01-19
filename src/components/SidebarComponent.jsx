@@ -91,6 +91,7 @@ const SidebarComponent = ({ toggleSettings }) => {
             Help
           </li>
         </ul>
+        
         <div className="sidebar-footer">
           <button className="logout-button">
             Logout

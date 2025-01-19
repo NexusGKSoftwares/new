@@ -4,7 +4,8 @@ import ErrorMessage from './ErrorMessage';
 import { ThemeContext } from '../App';
 import VoiceRecorder from './VoiceRecorder/VoiceRecorder';
 import 'normalize.css';
-
+import ProfileSection from './ProfileSection';
+import './ProfileSection.css';
 const sendMessageToAI = async (inputText, audioFile = null, sessionId = 'default') => {
   try {
     let response;
@@ -223,13 +224,17 @@ const Chat = () => {
 
   return (
     <div className={`chat-container ${theme}`}>
+   
       <div className="chat-header">
         <h1 className="header-title" style={{ fontFamily: "'Raleway', sans-serif", fontStyle: 'italic', fontWeight: 400 }}>
           <span>Moyoo</span>
           <span>AI</span>
         </h1>
+        <header className="flex justify-between items-center px-4 py-2">
+             <ProfileSection />
+              </header>
       </div>
-
+      
       <div className="chat-messages">
         {messages.map((message) => (
           <div
