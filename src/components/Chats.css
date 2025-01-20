@@ -113,6 +113,7 @@
     border-radius: 40px;
     overflow: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 /* Chat Messages Section */
@@ -126,7 +127,10 @@
     background: rgba(0, 0, 0, 0.306);
     max-height: 800px; 
     scroll-behavior: smooth; 
-}
+    scrollbar-width: none;
+    overflow-x: hidden;
+    
+  }
 
 .message {
     max-width: 80%;

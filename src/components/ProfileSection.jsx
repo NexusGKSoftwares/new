@@ -25,21 +25,23 @@ const ProfileSection = () => {
   return (
     <div className="profile-section">
       <div className="profile-icon-container" onClick={toggleDropdown}>
-        <img
+        {/* <img
           src={profileImage} 
           alt="Profile Icon"
           className="profile-icon"
-        />
-        <span className="profile-name">John Doe</span> 
+        /> */}
+        {/* <span className="profile-name">John Doe</span>  */}
+          <span>Moyo</span>
+          <span>AI</span>
       </div>
       {isDropdownOpen && (
         <div className="profile-dropdown">
           <div className="profile-dropdown-header">
-            {/* <img
+            <img
               src={profileImage} 
               alt="Profile Thumbnail"
               className="profile-thumbnail"
-            /> */}
+            />
             <div>
               <p className="profile-name-dropdown">John Doe</p>
               <p className="profile-email-dropdown">johndoe@example.com</p> 

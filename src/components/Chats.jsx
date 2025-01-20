@@ -227,12 +227,11 @@ const Chat = () => {
    
       <div className="chat-header">
         <h1 className="header-title" style={{ fontFamily: "'Raleway', sans-serif", fontStyle: 'italic', fontWeight: 400 }}>
-          <span>Moyoo</span>
-          <span>AI</span>
+          
+          <ProfileSection />
         </h1>
         <header className="flex justify-between items-center px-4 py-2">
-             <ProfileSection />
-              </header>
+             </header>
       </div>
       
       <div className="chat-messages">
